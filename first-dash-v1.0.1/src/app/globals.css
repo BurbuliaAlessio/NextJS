@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+
+:root {
+  --primary-color: #FFFFFF;
+  --secondary-color: #1a1a1a; 
+  --foreground-color: #000000;
+  --accent-color: #da6b22; 
+  --background-color: #FFFFFF; 
+  --font-main: 'Montserrat', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+
+html, body {
+  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+  color: var(--primary-color);
+}
+
+.button {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background-color: darken(var(--primary-color), 10%);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
