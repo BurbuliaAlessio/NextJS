@@ -1,0 +1,30 @@
+.nav{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 600px;
+    margin-right: 50px;
+}
+
+.list{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.link a{
+    display: block;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: transform 0.3s;
+}
+
+.link a:hover{
+    transform: scale(1.1);
+}
