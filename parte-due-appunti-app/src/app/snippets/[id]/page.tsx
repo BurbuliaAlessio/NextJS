@@ -4,9 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface SnippetShowProps {
-    params: {
-        id: string;
-    };
+  params: Promise<{ id: string }>; // Mantieni params come una Promise
 }
 
 const SnippetDetailPage = async (props: SnippetShowProps) => {
@@ -14,7 +12,7 @@ const SnippetDetailPage = async (props: SnippetShowProps) => {
     const { id } = await params; // Await the params object
 
     // Simulate an asynchronous loading
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     // Find the snippet based on the id
     const snippet = await db.snippet.findFirst({
@@ -31,9 +29,9 @@ const SnippetDetailPage = async (props: SnippetShowProps) => {
                     <div className="font-bold text-2xl">
                         {snippet.title}
                     </div>
-                    <div className="font-mono">
+                    <code className="font-mono">
                         {snippet.code}
-                    </div>
+                    </code>
                 </div>
                 <Link
                     className="p-2 border rounded bg-blue-600 text-white"
@@ -53,3 +51,14 @@ const SnippetDetailPage = async (props: SnippetShowProps) => {
 };
 
 export default SnippetDetailPage;
+
+//* questa funzione serve per generare i parametri statici
+//* che vengono utilizzati per generare le pagine statiche
+//* una volt cache vengono salvate delle pagine nella cache e non vengono ricalcolate
+//* bisogna riaggiornare la path con revalidatePath('/snippets/[id]'); ricorda!
+const generateStaticParams = async () => {
+    const snippets = await db.snippet.findMany();
+    return snippets.map((snippet) => ({ id: snippet.id.toString() }));
+};
+
+export { generateStaticParams };

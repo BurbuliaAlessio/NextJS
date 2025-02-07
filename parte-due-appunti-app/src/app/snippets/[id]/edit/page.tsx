@@ -3,9 +3,7 @@ import { db } from "@/app/db";
 import { notFound } from "next/navigation";
 
 interface SnippetEditProps {
-    params: {
-        id: string;
-    }
+    params: Promise<{ id: string }>;
 }
 
 const SnippetEditPage = async (props: SnippetEditProps) => {
