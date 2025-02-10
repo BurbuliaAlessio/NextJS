@@ -17,6 +17,8 @@ export const { handlers: {GET, POST}, auth, signOut, signIn } = NextAuth({
             clientId: GITHUB_CLIENT_ID,
             clientSecret: GITHUB_CLIENT_SECRET,
         }),
+        
+        
     ],
     callbacks: {
         //le informazioni possono essere riportate solo da un singolo provider
