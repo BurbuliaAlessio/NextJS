@@ -1,20 +1,14 @@
+import TopicCreateForm from '@/components/topics/topic-create-form';
 
-import { auth } from "@/auth";
-import { SigInButton, SigOutButton } from "@/components/button.component";
-
-export default async function Home() {
-  const session = await auth();
-  
+export default function Home() {
   return (
-    <>
-      { !session?.user ? (
-        <div> <SigInButton content="sig In"/> </div>
-      ) : (
-        <>
-          <div>{JSON.stringify(session.user)}</div>
-          <div> <SigOutButton content="sig Out"/> </div>
-        </>
-      )}
-    </>
-  )
+    <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="col-span-3">
+        <h1 className="text-xl m-2">Top Posts</h1>
+      </div>
+      <div>
+        <TopicCreateForm />
+      </div>
+    </div>
+  );
 }
